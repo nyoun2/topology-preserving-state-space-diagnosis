@@ -146,10 +146,10 @@ The default sample dates are defined in `configs/paper_valid_time.yaml`:
 ```yaml
 dates:
   include_dates:
-    - "2025011300"
-    - "2025041300"
-    - "2025071300"
-    - "2025101300"
+    - "2025011500"
+    - "2025041500"
+    - "2025071500"
+    - "2025101500"
 ```
 
 To run the same valid-time workflow with all nine model configurations:
