@@ -16,33 +16,6 @@ The public reproduction workflow focuses on two main diagnostic tasks:
 
 The full source code for feature extraction, contrastive representation learning, and state-space construction is included for transparency. However, the default reproduction workflow uses archived inference-ready input data and trained models, because rebuilding the full state space from the original meteorological datasets requires large external datasets and substantial computation.
 
-## Repository structure
-
-.
-├── feat_space_analysis/
-│   ├── cli.py
-│   ├── workflows/
-│   ├── lib/
-│   └── ...
-│
-├── configs/
-│   ├── paper_lead_time.yaml
-│   └── paper_valid_time.yaml
-│
-├── data/
-|   ├── model_all/
-│   ├── out_test_features/
-│   ├── state_space/
-│   ├── logs/
-│   ├── input/
-│   └── ...
-│
-├── README.md
-├── requirements.txt
-└── LICENSE
-
-
-The `configs/paper_*.yaml` files are intended for public reproduction using the archived data package.
 
 ## Archived data and trained models
 
@@ -51,18 +24,9 @@ Zenodo DOI: <TO_BE_ADDED>
 
 The Zenodo archive is expected to include:
 
-data/input/
-L <tag_name>/
-    L Test_4var1lev/
-        L 2025011500_lead/
-        L 2025041500_lead/
-        L 2025071500_lead/
-        L 2025101500_lead/
-        L 2025011500_valid/
-        L 2025041500_valid/
-        L 2025071500_valid/
-        L 2025101500_valid/
-
+data/input/<tag_name>/Test_4var1lev/
+2025011500_lead/, 2025041500_lead/, 2025071500_lead/, 2025101500_lead/
+2025011500_valid/, 2025041500_valid/, 2025071500_valid/, 2025101500_valid/
 
 The exact file organization may depend on the final Zenodo package. If the archive is extracted into the repository root, the default `paper_*.yaml` configuration files should work without major modification.
 
