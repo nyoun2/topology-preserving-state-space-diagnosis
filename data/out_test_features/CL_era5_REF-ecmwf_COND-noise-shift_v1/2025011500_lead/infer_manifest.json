@@ -1,0 +1,68 @@
+{
+  "test_set": "2025011500_lead",
+  "members": [
+    "ai_01",
+    "ai_02",
+    "ai_03",
+    "ai_04",
+    "ai_05",
+    "ai_06",
+    "ai_07",
+    "ai_08",
+    "ai_09",
+    "ecmwf"
+  ],
+  "T": 49,
+  "normalization_used": {
+    "mean": [
+      279.6812438964844,
+      14435.75390625,
+      1.9745426177978516,
+      -0.2860598564147949
+    ],
+    "std": [
+      12.89196491241455,
+      666.16650390625,
+      6.325681686401367,
+      5.783641815185547
+    ],
+    "eps": 1e-06,
+    "clip": null
+  },
+  "extractor_cfg": {
+    "weights": "imagenet",
+    "embed_dim": 256,
+    "fused_dim": 256,
+    "fusion_mode": "concat_linear",
+    "weights_path": "data/model_all/CL_era5_REF-ecmwf_COND-noise-shift_v1\\extractor_CL_era5_REF-ecmwf_COND-noise-shift_v1.weights.h5"
+  },
+  "run_dir": "data/model_all/CL_era5_REF-ecmwf_COND-noise-shift_v1/checkpoints_rel",
+  "best_proj_weights": "data/model_all/CL_era5_REF-ecmwf_COND-noise-shift_v1/checkpoints_rel\\_best_finetune.weights.h5",
+  "outputs": {
+    "fused_paths": {
+      "ecmwf": "data\\out_test_features\\CL_era5_REF-ecmwf_COND-noise-shift_v1\\2025011500_lead\\fused\\ecmwf_fused.npy",
+      "ai_01": "data\\out_test_features\\CL_era5_REF-ecmwf_COND-noise-shift_v1\\2025011500_lead\\fused\\ai_01_fused.npy",
+      "ai_02": "data\\out_test_features\\CL_era5_REF-ecmwf_COND-noise-shift_v1\\2025011500_lead\\fused\\ai_02_fused.npy",
+      "ai_03": "data\\out_test_features\\CL_era5_REF-ecmwf_COND-noise-shift_v1\\2025011500_lead\\fused\\ai_03_fused.npy",
+      "ai_04": "data\\out_test_features\\CL_era5_REF-ecmwf_COND-noise-shift_v1\\2025011500_lead\\fused\\ai_04_fused.npy",
+      "ai_05": "data\\out_test_features\\CL_era5_REF-ecmwf_COND-noise-shift_v1\\2025011500_lead\\fused\\ai_05_fused.npy",
+      "ai_06": "data\\out_test_features\\CL_era5_REF-ecmwf_COND-noise-shift_v1\\2025011500_lead\\fused\\ai_06_fused.npy",
+      "ai_07": "data\\out_test_features\\CL_era5_REF-ecmwf_COND-noise-shift_v1\\2025011500_lead\\fused\\ai_07_fused.npy",
+      "ai_08": "data\\out_test_features\\CL_era5_REF-ecmwf_COND-noise-shift_v1\\2025011500_lead\\fused\\ai_08_fused.npy",
+      "ai_09": "data\\out_test_features\\CL_era5_REF-ecmwf_COND-noise-shift_v1\\2025011500_lead\\fused\\ai_09_fused.npy"
+    },
+    "z_ecmwf": "data\\out_test_features\\CL_era5_REF-ecmwf_COND-noise-shift_v1\\2025011500_lead\\proj\\z_ecmwf.npy",
+    "pairs_dir": "data\\out_test_features\\CL_era5_REF-ecmwf_COND-noise-shift_v1\\2025011500_lead\\proj",
+    "z_paths": {
+      "ai_01": "data\\out_test_features\\CL_era5_REF-ecmwf_COND-noise-shift_v1\\2025011500_lead\\proj\\z_ai_01.npy",
+      "ai_02": "data\\out_test_features\\CL_era5_REF-ecmwf_COND-noise-shift_v1\\2025011500_lead\\proj\\z_ai_02.npy",
+      "ai_03": "data\\out_test_features\\CL_era5_REF-ecmwf_COND-noise-shift_v1\\2025011500_lead\\proj\\z_ai_03.npy",
+      "ai_04": "data\\out_test_features\\CL_era5_REF-ecmwf_COND-noise-shift_v1\\2025011500_lead\\proj\\z_ai_04.npy",
+      "ai_05": "data\\out_test_features\\CL_era5_REF-ecmwf_COND-noise-shift_v1\\2025011500_lead\\proj\\z_ai_05.npy",
+      "ai_06": "data\\out_test_features\\CL_era5_REF-ecmwf_COND-noise-shift_v1\\2025011500_lead\\proj\\z_ai_06.npy",
+      "ai_07": "data\\out_test_features\\CL_era5_REF-ecmwf_COND-noise-shift_v1\\2025011500_lead\\proj\\z_ai_07.npy",
+      "ai_08": "data\\out_test_features\\CL_era5_REF-ecmwf_COND-noise-shift_v1\\2025011500_lead\\proj\\z_ai_08.npy",
+      "ai_09": "data\\out_test_features\\CL_era5_REF-ecmwf_COND-noise-shift_v1\\2025011500_lead\\proj\\z_ai_09.npy"
+    }
+  }
+}
