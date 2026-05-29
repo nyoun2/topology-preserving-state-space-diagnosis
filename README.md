@@ -52,16 +52,16 @@ Zenodo DOI: <TO_BE_ADDED>
 The Zenodo archive is expected to include:
 
 data/input/
-└── <tag_name>/
-    └── Test_4var1lev/
-        ├── 2025011500_lead/
-        ├── 2025041500_lead/
-        ├── 2025071500_lead/
-        ├── 2025101500_lead/
-        ├── 2025011500_valid/
-        ├── 2025041500_valid/
-        ├── 2025071500_valid/
-        └── 2025101500_valid/
+L <tag_name>/
+    L Test_4var1lev/
+        L 2025011500_lead/
+        L 2025041500_lead/
+        L 2025071500_lead/
+        L 2025101500_lead/
+        L 2025011500_valid/
+        L 2025041500_valid/
+        L 2025071500_valid/
+        L 2025101500_valid/
 
 
 The exact file organization may depend on the final Zenodo package. If the archive is extracted into the repository root, the default `paper_*.yaml` configuration files should work without major modification.
@@ -120,7 +120,7 @@ python -m feat_space_analysis.cli lead --config configs/paper_lead_time.yaml
 By default, this command uses existing processed outputs in:
 
 ```text
-out_test_features/<tag_name>/<target_date>
+out_test_features/<tag_name>/<target_date>_lead
 ```
 
 The default sample dates are defined in `configs/paper_lead_time.yaml`:
