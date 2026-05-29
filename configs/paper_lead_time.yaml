@@ -1,0 +1,40 @@
+experiment:
+  name: paper_lead_time_trajectory
+  tag_name: CL_era5_REF-ecmwf_COND-noise-shift_v1
+
+paths:
+  # Inference input root.
+  # Actual input folders:
+  # data/input/{tag_name}/Test_4var1lev/{target_date}
+  input_root_dir: data/input
+  input_subdir: Test_4var1lev
+
+  # Processed inference output root.
+  # Actual processed folders:
+  # out_test_features/{tag_name}/{target_date}
+  processed_root_dir: data/out_test_features
+
+  # State-space background file
+  feature_npy: data/out_test_features/CL_era5_REF-ecmwf_COND-noise-shift_v1/era5_manifold_z.npy
+
+  # Evaluation log file
+  log_path: data/logs/eval_log_detail.jsonl
+
+dates:
+  include_dates:
+    - "2025011500"
+    - "2025041500"
+    - "2025071500"
+    - "2025101500"
+
+folders:
+  target_folder_suffix: "_lead"
+
+models:
+  model_list: [1, 4, 7]
+
+trajectory:
+  top_ratio: 0.15
+
+runtime:
+  show_only: true
