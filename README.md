@@ -61,14 +61,14 @@ For lead-time trajectory diagnosis, the suffix is empty:
 
 ```yaml
 folders:
-  target_folder_suffix: ""
+  target_folder_suffix: "_lead"
 ```
 
 For valid-time trajectory diagnosis, the current suffix is:
 
 ```yaml
 folders:
-  target_folder_suffix: "_target"
+  target_folder_suffix: "_valid"
 ```
 
 If the valid-time folders are renamed later, for example to `_valid`, only the YAML file needs to be updated.
