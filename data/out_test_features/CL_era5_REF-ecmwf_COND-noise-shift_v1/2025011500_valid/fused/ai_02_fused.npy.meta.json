@@ -1,0 +1,9 @@
+{
+  "out_path": "data\\out_test_features\\CL_era5_REF-ecmwf_COND-noise-shift_v1\\2025011500_valid\\fused\\ai_02_fused.npy",
+  "num_samples": 13,
+  "feature_dim": 256,
+  "dtype": "float32",
+  "indices_min": 0,
+  "indices_max": 12,
+  "preprocess_fn": "PREPROCESS_FN"
+}
