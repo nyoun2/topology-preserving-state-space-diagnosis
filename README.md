@@ -20,7 +20,7 @@ The full source code for feature extraction, contrastive representation learning
 ## Archived data and trained models
 
 The input data and trained model files required for reproduction are archived separately on Zenodo:
-Zenodo DOI: <TO_BE_ADDED>
+Zenodo DOI:  https://doi.org/10.5281/zenodo.20441860
 
 The Zenodo archive is expected to include:
 
