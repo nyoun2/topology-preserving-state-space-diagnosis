@@ -23,7 +23,7 @@ The source code, trained model files, processed trajectory outputs, precomputed 
 A frozen version of this repository is archived on Zenodo:
 
 ```text
-Zenodo DOI: <TO_BE_ADDED>
+Zenodo DOI: https://doi.org/10.5281/zenodo.20483795
 ```
 
 The archived software package includes the reproduction materials contained in the GitHub release, including:
@@ -208,7 +208,7 @@ Paper:
 Kim, H. and Cho, J. H.: Topology-Preserving State Space Representation for Diagnosing Weather Forecast Models, submitted to Geoscientific Model Development, 2026.
 
 Code and reproduction package:
-<TO_BE_ADDED>
+https://doi.org/10.5281/zenodo.20483795
 ```
 
 ## License
