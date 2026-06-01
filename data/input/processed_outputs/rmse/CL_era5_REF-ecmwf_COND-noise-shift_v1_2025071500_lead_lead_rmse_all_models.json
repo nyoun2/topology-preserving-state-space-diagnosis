@@ -1,0 +1,29 @@
+{
+  "target_date": "2025071500_lead",
+  "tag_name": "CL_era5_REF-ecmwf_COND-noise-shift_v1",
+  "trajectory_type": "lead",
+  "computed_model_list": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "var_name": [
+    "t",
+    "z",
+    "u",
+    "v"
+  ],
+  "lenTime": 49,
+  "rmse_array_shape": [
+    9,
+    49,
+    4
+  ],
+  "note": "This file contains precomputed RMSE curves only. It does not include raw forecast, analysis, or gridded atmospheric fields. The cache is intended to store all ai_01 to ai_09 models, and plotting functions can select a subset using model_list."
+}
