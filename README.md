@@ -1,6 +1,6 @@
 # Topology-Preserving State-Space Diagnosis of Weather Forecast Trajectories
 
-This repository provides source code for reproducing the lead-time and valid-time trajectory diagnosis experiments described in the accompanying manuscript.
+This repository provides source code and public reproduction materials for the lead-time and valid-time trajectory diagnosis experiments described in the accompanying manuscript.
 
 The framework diagnoses weather forecast evolution in a learned topology-preserving state space. Instead of relying only on pointwise error metrics such as RMSE, the workflow compares forecast trajectories against reference trajectories in a low-dimensional state space constructed from multivariate atmospheric fields.
 
@@ -14,64 +14,45 @@ The public reproduction workflow focuses on two main diagnostic tasks:
 2. **Valid-time trajectory diagnosis**
    Evaluates forecasts from different initialization dates that verify at the same target time.
 
-The full source code for feature extraction, contrastive representation learning, and state-space construction is included for transparency. However, the default reproduction workflow uses archived inference-ready input data and trained models, because rebuilding the full state space from the original meteorological datasets requires large external datasets and substantial computation.
+The full source code for feature extraction, contrastive representation learning, and state-space construction is included for transparency. However, the public reproduction workflow does not require the original raw meteorological fields. Instead, it uses processed trajectory outputs and precomputed RMSE curves included in this repository.
 
+## Archived code and reproduction materials
 
-## Archived data and trained models
+The source code, trained model files, processed trajectory outputs, precomputed RMSE curves, and configuration files required for the public reproduction workflow are included in this repository.
 
-The input data and trained model files required for reproduction are archived separately on Zenodo:
-Zenodo DOI:  https://doi.org/10.5281/zenodo.20441860
+A frozen version of this repository is archived on Zenodo:
 
-The Zenodo archive is expected to include:
-
-data/input/<tag_name>/Test_4var1lev/
-2025011500_lead/, 2025041500_lead/, 2025071500_lead/, 2025101500_lead/
-2025011500_valid/, 2025041500_valid/, 2025071500_valid/, 2025101500_valid/
-
-The exact file organization may depend on the final Zenodo package. If the archive is extracted into the repository root, the default `paper_*.yaml` configuration files should work without major modification.
-
-
-## Preparing the data
-
-Download the Zenodo archive and extract it into the repository root.
-
-After extraction, the following paths should exist:
-data/input/<tag_name>/Test_4var1lev/
-
-For local testing with a different directory structure, edit the corresponding YAML files under `configs/`.
-
-The most important path settings are:
-
-paths:
-  input_root_dir: data/input
-  input_subdir: Test_4var1lev
-  processed_root_dir: out_test_features
-
-These paths are interpreted as follows:
-
-
-Inference input:
-{input_root_dir}/{tag_name}/{input_subdir}/{target_date}{suffix}
-
-Processed output:
-{processed_root_dir}/{tag_name}/{target_date}{suffix}
-
-
-For lead-time trajectory diagnosis, the suffix is empty:
-
-```yaml
-folders:
-  target_folder_suffix: "_lead"
+```text
+Zenodo DOI: https://doi.org/10.5281/zenodo.20441860
 ```
 
-For valid-time trajectory diagnosis, the current suffix is:
+The archived software package includes the reproduction materials contained in the GitHub release, including:
 
-```yaml
-folders:
-  target_folder_suffix: "_valid"
+```text
+out_test_features/
+processed_outputs/
+trained_models/
+configs/
 ```
 
-If the valid-time folders are renamed later, for example to `_valid`, only the YAML file needs to be updated.
+No separate raw-data archive is provided. The raw IFS analysis and forecast fields used in the full experiments were obtained through institutional access and cannot be publicly redistributed. The public reproduction workflow therefore uses processed trajectory outputs and precomputed RMSE curves rather than the restricted raw gridded fields.
+
+## Preparing the repository
+
+Clone or download this repository.
+
+The public reproduction materials are already included in the repository and its archived release. The default workflow uses existing processed outputs, so raw input data are not required for reproducing the archived trajectory figures and RMSE curves.
+
+The key directories are:
+
+```text
+out_test_features/
+processed_outputs/
+trained_models/
+configs/
+```
+
+The YAML files under `configs/` define the default dates, output paths, and model selections. In most cases, users only need to change the model list if they want to display different model configurations.
 
 ## Reproducing lead-time trajectory diagnosis
 
@@ -81,11 +62,7 @@ Run:
 python -m feat_space_analysis.cli lead --config configs/paper_lead_time.yaml
 ```
 
-By default, this command uses existing processed outputs in:
-
-```text
-out_test_features/<tag_name>/<target_date>_lead
-```
+By default, this command uses existing processed outputs and precomputed RMSE curves. It does not require raw gridded input fields.
 
 The default sample dates are defined in `configs/paper_lead_time.yaml`:
 
@@ -100,31 +77,21 @@ dates:
 
 The default representative models are:
 
+```yaml
 models:
   model_list: [1, 4, 7]
+```
 
-To run the same lead-time workflow with all nine model configurations:
+To display all nine model configurations:
 
 ```bash
 python -m feat_space_analysis.cli lead --config configs/paper_lead_time.yaml --model-list 1 2 3 4 5 6 7 8 9
 ```
 
-To rerun inference from the prepared input folders instead of only showing existing processed results:
+To display a different subset of models:
 
 ```bash
-python -m feat_space_analysis.cli lead --config configs/paper_lead_time.yaml --no-show-only
-```
-
-In this case, the command uses input data from:
-
-```text
-data/input/<tag_name>/Test_4var1lev/<target_date>_lead
-```
-
-and writes processed outputs to:
-
-```text
-out_test_features/<tag_name>/<target_date>_lead
+python -m feat_space_analysis.cli lead --config configs/paper_lead_time.yaml --model-list 2 5 8
 ```
 
 ## Reproducing valid-time trajectory diagnosis
@@ -135,11 +102,7 @@ Run:
 python -m feat_space_analysis.cli valid --config configs/paper_valid_time.yaml
 ```
 
-By default, this command uses existing processed outputs in:
-
-```text
-out_test_features/<tag_name>/<target_date>_valid
-```
+By default, this command uses existing processed outputs and precomputed RMSE curves. It does not require raw gridded input fields.
 
 The default sample dates are defined in `configs/paper_valid_time.yaml`:
 
@@ -152,29 +115,50 @@ dates:
     - "2025101500"
 ```
 
-To run the same valid-time workflow with all nine model configurations:
+The default representative models are:
+
+```yaml
+models:
+  model_list: [1, 4, 7]
+```
+
+To display all nine model configurations:
 
 ```bash
 python -m feat_space_analysis.cli valid --config configs/paper_valid_time.yaml --model-list 1 2 3 4 5 6 7 8 9
 ```
 
-To rerun inference from the prepared input folders:
+To display a different subset of models:
 
 ```bash
-python -m feat_space_analysis.cli valid --config configs/paper_valid_time.yaml --no-show-only
+python -m feat_space_analysis.cli valid --config configs/paper_valid_time.yaml --model-list 3 6 9
 ```
 
-In this case, the command uses input data from:
+## Model index
+
+The model indices used by `--model-list` correspond to:
 
 ```text
-data/input/<tag_name>/Test_4var1lev/<target_date>_valid
+1: fnet_ifs
+2: fnet_kim
+3: fnet_um
+4: grph_ifs
+5: grph_kim
+6: grph_um
+7: pang_ifs
+8: pang_kim
+9: pang_um
 ```
 
-and writes processed outputs to:
+The same indices are used for both lead-time and valid-time trajectory diagnosis.
 
-```text
-out_test_features/<tag_name>/<target_date>_valid
-```
+## Important note on figure navigation
+
+The reproduction scripts generate figures sequentially for the configured dates.
+
+After a figure is displayed, click inside the most recently generated figure window to continue to the next date. The script waits for this interaction before moving on to the next trajectory example.
+
+If the script appears to pause after producing a figure, activate the latest figure window and click inside it.
 
 ## Configuration files
 
@@ -185,51 +169,46 @@ configs/paper_lead_time.yaml
 configs/paper_valid_time.yaml
 ```
 
+The most important setting for public reproduction is the model list:
 
-## Command-line options
-
-The command-line arguments override the YAML settings.
-
-Example: use a different model list.
-
-```bash
-python -m feat_space_analysis.cli lead --config configs/paper_lead_time.yaml --model-list 1 2 3
+```yaml
+models:
+  model_list: [1, 4, 7]
 ```
 
-Example: rerun inference instead of only showing existing results.
+This can also be overridden from the command line:
 
 ```bash
-python -m feat_space_analysis.cli lead --config configs/paper_lead_time.yaml --no-show-only
+python -m feat_space_analysis.cli lead --config configs/paper_lead_time.yaml --model-list 1 4 7
+python -m feat_space_analysis.cli valid --config configs/paper_valid_time.yaml --model-list 1 4 7
 ```
 
-Example: explicitly use existing processed results.
+The default execution mode is designed to show existing processed results. Since the public repository does not include raw gridded input fields, users normally do not need to change the `show_only` setting.
 
-```bash
-python -m feat_space_analysis.cli lead --config configs/paper_lead_time.yaml --show-only
-```
+## Notes on raw-data mode
 
-Example: change the valid-time suffix from `_target` to `_valid`.
+The public repository does not include the restricted raw IFS analysis and forecast fields. Therefore, users should normally run the scripts in the default show-only workflow.
 
-```bash
-python -m feat_space_analysis.cli valid --config configs/paper_valid_time.yaml --target-folder-suffix _valid
-```
+Options that rerun inference or recompute diagnostics from raw gridded fields are intended only for internal use, or for users who have separately prepared the required raw input fields in the expected directory structure. These options are not required for the public reproduction workflow.
 
 ## Notes on reproducibility
 
-The default public workflow is designed to reproduce the diagnostic trajectory figures and related outputs using archived input data, trained models, and processed feature-space results.
+The default public workflow is designed to reproduce the diagnostic trajectory figures, RMSE curves, and related outputs using archived processed results, precomputed RMSE curves, and trained models.
 
-The repository also contains source code for the broader framework, including feature extraction, representation learning, and state-space construction. However, full re-training from the original meteorological data is not part of the default public workflow, because it requires large external datasets and substantial computation.
+The repository also contains source code for the broader framework, including feature extraction, representation learning, and state-space construction. However, full reprocessing from the original meteorological fields is not part of the default public workflow, because the raw IFS analysis and forecast data used in the full experiments were obtained through institutional access and cannot be publicly redistributed.
+
+To support reproducibility within these restrictions, the repository includes processed trajectory outputs and precomputed RMSE curves rather than the restricted raw gridded fields.
 
 ## Citation
 
-If you use this code or data, please cite the accompanying paper and the archived Zenodo record.
+If you use this code or reproduction package, please cite the accompanying paper and the archived Zenodo record.
 
 ```text
 Paper:
-<TO_BE_ADDED>
+Kim, H. and Cho, J. H.: Topology-Preserving State Space Representation for Diagnosing Weather Forecast Models, submitted to Geoscientific Model Development, 2026.
 
-Code and data:
-<TO_BE_ADDED>
+Code and reproduction package:
+https://doi.org/10.5281/zenodo.20441860
 ```
 
 ## License
@@ -241,5 +220,7 @@ This repository is distributed under the terms of the license specified in `LICE
 For questions about the code or reproduction workflow, please contact:
 
 ```text
-<TO_BE_ADDED>
+Hyoungnyoun Kim
+nyoun [at] koera [dot] kr
 ```
+
